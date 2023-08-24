@@ -18,9 +18,9 @@ const SContentContainer = css`
 `;
 
 function MainLayout({ title, menus, children }) {
-    const testMenus = [1, 2, 3, 4];
+    // const testMenus = [1, 2, 3, 4];
 
-    const testMenusMap = testMenus.map((menu) => <li>{menu}</li>);
+    // const testMenusMap = testMenus.map((menu) => <li>{menu}</li>);
     // const testMenusMap2 = [ <li>1</li>, <li>2</li>, <li>3</li>, <li>4</li> ];
 
     return (

@@ -21,10 +21,18 @@ function APage(props) {
         secondNum: 0
     });
 
-    useEffect(() => {
-        calc(inputValueObjs.firstNum, inputValueObjs.secondNum);
-        // calc(10, 20);
-    });
+    const [ name, setName ] = useState("");
+
+    useEffect(
+        () => {
+            console.log("useEffect 실행!")
+            calc(inputValueObjs.firstNum, inputValueObjs.secondNum);
+            // calc(10, 20);
+            return () => {
+                console.log("언마운트");
+            };
+        }, []
+    );
 
     const calc = (x, y) => {
         setResult(x + y);
@@ -37,17 +45,20 @@ function APage(props) {
                 [e.target.name]: parseInt(e.target.value)
             }
         );
-
     }    
+
+    const handleNameInputChange = (e) => {
+        setName(e.target.value);
+    }
 
     return (
         <MainLayout title={"A페이지"} menus={menus} >
-            <div>
-                {result}
-            </div>
+            <div>{result}</div>
+            <div>{name}</div>
             <div>
                 <input type="text" name='firstNum' onChange={handleInputChange} placeholder='1번 값'/>
                 <input type="text" name='secondNum' onChange={handleInputChange} placeholder='2번 값'/>
+                <input type="text" name='name' onChange={handleNameInputChange} placeholder='이름'/>
             </div>
         </MainLayout>
     );
